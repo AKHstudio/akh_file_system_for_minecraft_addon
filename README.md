@@ -1,0 +1,2 @@
+# akh_file_system_for_minecraft_addon
+minecraftアドオン開発用のファイルシステムライブラリ
