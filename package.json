@@ -1,0 +1,45 @@
+{
+    "name": "akh_file_system_for_minecraft_addon",
+    "version": "0.0.1",
+    "description": "minecraft アドオン開発用のファイルシステムライブラリ",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "node esbuild.js",
+        "watch": "node esbuild.js --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AKHstudio/akh_file_system_for_minecraft_addon.git"
+    },
+    "keywords": [
+        "minecraft",
+        "addon",
+        "fileSystem"
+    ],
+    "author": "tako1dayo (AKHStudio)",
+    "license": "AGPL-3.0",
+    "bugs": {
+        "url": "https://github.com/AKHstudio/akh_file_system_for_minecraft_addon/issues"
+    },
+    "homepage": "https://github.com/AKHstudio/akh_file_system_for_minecraft_addon#readme",
+    "devDependencies": {
+        "@types/cli-progress": "^3.11.6",
+        "@types/glob": "^8.1.0",
+        "@types/node": "^22.13.1",
+        "@types/readline-sync": "^1.4.8",
+        "@types/uglify-js": "^3.17.5",
+        "chokidar": "^4.0.3",
+        "esbuild": "^0.24.2"
+    },
+    "dependencies": {
+        "chalk": "^5.4.1",
+        "cli-progress": "^3.12.0",
+        "glob": "^11.0.1",
+        "inquirer": "^12.4.1",
+        "readline-sync": "^1.4.10",
+        "typescript": "^5.7.3",
+        "uglify-js": "^3.19.3",
+        "yargs": "^17.7.2"
+    }
+}
