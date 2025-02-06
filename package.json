@@ -4,6 +4,9 @@
     "description": "minecraft アドオン開発用のファイルシステムライブラリ",
     "main": "index.js",
     "type": "module",
+    "bin": {
+        "akhfs": "./dist/bin/akhfs.js"
+    },
     "scripts": {
         "build": "node esbuild.js",
         "watch": "node esbuild.js --watch"
@@ -29,6 +32,7 @@
         "@types/node": "^22.13.1",
         "@types/readline-sync": "^1.4.8",
         "@types/uglify-js": "^3.17.5",
+        "@types/yargs": "^17.0.33",
         "chokidar": "^4.0.3",
         "esbuild": "^0.24.2"
     },
