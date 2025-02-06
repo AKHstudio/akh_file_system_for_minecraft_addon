@@ -41,4 +41,5 @@ if (arg === '--watch') {
     });
 } else {
     await esbuild.build(buildOptions);
+    execSync('tsc --noEmit', { stdio: 'inherit' });
 }
