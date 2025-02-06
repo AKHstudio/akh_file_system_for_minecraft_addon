@@ -3,6 +3,18 @@ import chokidar from 'chokidar';
 import { execSync } from 'child_process';
 const arg = process.argv[2];
 
+const buildOptions = {
+    entryPoints: ['src/**/*.ts'],
+    bundle: true,
+    outdir: 'dist',
+    minify: false,
+    platform: 'node',
+    target: 'ES6',
+    tsconfig: './tsconfig.json',
+    format: 'esm',
+    packages: 'external',
+};
+
 if (arg === '--watch') {
     console.log('Watching for changes...');
 
@@ -15,23 +27,12 @@ if (arg === '--watch') {
             console.log('File changed:', path);
 
             try {
-                await esbuild.build({
-                    entryPoints: ['src/*.ts', 'src/lib/getAddons.ts'],
-                    bundle: true,
-                    outdir: 'dist',
-                    minify: false,
-                    platform: 'node',
-                    target: 'ES6',
-                    tsconfig: './tsconfig.json',
-                    format: 'esm',
-                    packages: 'external',
-                });
+                await esbuild.build(buildOptions);
                 execSync('tsc --noEmit', { stdio: 'inherit' });
+                console.log('Build complete!');
             } catch (error) {
                 console.error(error);
             }
-
-            console.log('Build complete!');
         });
 
     process.on('SIGINT', () => {
@@ -39,15 +40,5 @@ if (arg === '--watch') {
         process.exit(0);
     });
 } else {
-    await esbuild.build({
-        entryPoints: ['src/**/*.ts'],
-        bundle: true,
-        outdir: './dist',
-        minify: false,
-        platform: 'node',
-        target: 'ES6',
-        tsconfig: './tsconfig.json',
-        format: 'esm',
-        packages: 'external',
-    });
+    await esbuild.build(buildOptions);
 }
