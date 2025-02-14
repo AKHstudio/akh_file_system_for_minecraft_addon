@@ -1,7 +1,8 @@
 import * as esbuild from 'esbuild';
 import chokidar from 'chokidar';
 import { execSync } from 'child_process';
-const arg = process.argv[2];
+import { argv, exit, on } from 'process';
+const arg = argv[2];
 
 const buildOptions = {
     entryPoints: ['src/**/*.ts'],
@@ -23,7 +24,7 @@ if (arg === '--watch') {
             interval: 100,
             awaitWriteFinish: true,
         })
-        .on('change', async (path, stats) => {
+        .on('change', async (path) => {
             console.log('File changed:', path);
 
             try {
@@ -35,9 +36,9 @@ if (arg === '--watch') {
             }
         });
 
-    process.on('SIGINT', () => {
+    on('SIGINT', () => {
         console.log('Goodbye!');
-        process.exit(0);
+        exit(0);
     });
 } else {
     await esbuild.build(buildOptions);
