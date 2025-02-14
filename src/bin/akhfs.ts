@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command, Option } from 'commander';
+import { argv } from 'process';
 const program = new Command();
 
 program
@@ -12,7 +13,7 @@ program
         console.log({ addons, options });
     });
 
-program.parse(process.argv);
+program.parse(argv);
 
 // prettier-ignore
 // yargs(hideBin(process.argv))
