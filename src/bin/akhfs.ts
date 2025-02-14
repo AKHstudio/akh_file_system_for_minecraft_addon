@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
+import { init } from '@/init.js';
 import { Command, Option } from 'commander';
 import { argv } from 'process';
 const program = new Command();
+
+program.option('--init', 'Initialize the project').action(() => {
+    init();
+});
 
 program
     .command('build [addons...]')
