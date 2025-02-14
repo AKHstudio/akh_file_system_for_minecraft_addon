@@ -1,8 +1,8 @@
 import * as esbuild from 'esbuild';
 import chokidar from 'chokidar';
 import { execSync } from 'child_process';
-import { argv, exit, on } from 'process';
-const arg = argv[2];
+import process from 'process';
+const arg = process.argv[2];
 
 const buildOptions = {
     entryPoints: ['src/**/*.ts'],
@@ -36,9 +36,9 @@ if (arg === '--watch') {
             }
         });
 
-    on('SIGINT', () => {
+    process.on('SIGINT', () => {
         console.log('Goodbye!');
-        exit(0);
+        process.exit(0);
     });
 } else {
     await esbuild.build(buildOptions);
