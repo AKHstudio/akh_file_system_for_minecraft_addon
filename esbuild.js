@@ -10,7 +10,7 @@ const buildOptions = {
     minify: false,
     platform: 'node',
     target: 'ES6',
-    tsconfig: './tsconfig.json',
+    tsconfig: './src/tsconfig.json',
     format: 'esm',
     packages: 'external',
 };
@@ -28,7 +28,7 @@ if (arg === '--watch') {
 
             try {
                 await esbuild.build(buildOptions);
-                execSync('tsc --noEmit', { stdio: 'inherit' });
+                execSync('tsc -p ./src/tsconfig.json --noEmit', { stdio: 'inherit' });
                 console.log('Build complete!');
             } catch (error) {
                 console.error(error);
@@ -41,5 +41,6 @@ if (arg === '--watch') {
     });
 } else {
     await esbuild.build(buildOptions);
-    execSync('tsc --noEmit', { stdio: 'inherit' });
+    execSync('tsc -p ./src/tsconfig.json --noEmit', { stdio: 'inherit' });
+    console.log('Build complete!');
 }
