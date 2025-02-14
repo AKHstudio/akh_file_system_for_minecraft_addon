@@ -9,7 +9,9 @@
     },
     "scripts": {
         "build": "node esbuild.js",
-        "watch": "node esbuild.js --watch"
+        "watch": "node esbuild.js --watch",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "repository": {
         "type": "git",
@@ -27,6 +29,7 @@
     },
     "homepage": "https://github.com/AKHstudio/akh_file_system_for_minecraft_addon#readme",
     "devDependencies": {
+        "@eslint/js": "^9.20.0",
         "@types/cli-progress": "^3.11.6",
         "@types/glob": "^8.1.0",
         "@types/node": "^22.13.1",
@@ -34,8 +37,13 @@
         "@types/readline-sync": "^1.4.8",
         "@types/uglify-js": "^3.17.5",
         "@types/yargs": "^17.0.33",
+        "@typescript-eslint/eslint-plugin": "^8.24.0",
+        "@typescript-eslint/parser": "^8.24.0",
         "chokidar": "^4.0.3",
-        "esbuild": "^0.24.2"
+        "esbuild": "^0.24.2",
+        "eslint": "^9.20.1",
+        "globals": "^15.15.0",
+        "typescript-eslint": "^8.24.0"
     },
     "dependencies": {
         "chalk": "^5.4.1",
